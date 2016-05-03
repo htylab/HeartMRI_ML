@@ -1,0 +1,14 @@
+(dp0
+S'copy_X'
+p1
+I01
+sS'normalize'
+p2
+I00
+sS'n_jobs'
+p3
+I1
+sS'fit_intercept'
+p4
+I01
+s.
