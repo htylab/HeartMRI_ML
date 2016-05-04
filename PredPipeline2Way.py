@@ -11,10 +11,10 @@ import re
 import dicom
 from LoadData import crop_resize
 import sys
-sys.path.insert(0, '/home/odyss/Desktop/dsb/AML/DataScienceBowl/convolution/')
+sys.path.insert(0, '/DataScienceBowl/convolution/')
 import LeNet
 from LeNet import predict as CNNpred
-sys.path.insert(0, '/home/odyss/Desktop/dsb/AML/DataScienceBowl/Region of Interest/Stacked autoencoder/')
+sys.path.insert(0, '/DataScienceBowl/Region of Interest/Stacked autoencoder/')
 from stackedAutoencoder import predict_sa as SApred
 from stackedAutoencoder import crop_ROI
 from stackedAutoencoder import SA
@@ -22,7 +22,7 @@ from sklearn import linear_model
 import time
 import pdb
 
-sys.path.insert(0, '/home/odyss/Desktop/dsb/AML/DataScienceBowl/Active Contour/')
+sys.path.insert(0, '/DataScienceBowl/Active Contour/')
 import active_contour as AC
 from numpy import genfromtxt
 
@@ -388,7 +388,7 @@ def calc_volarea(patient):
  """
 
 
-def regress_vol(resultspath = '/home/odyss/Desktop/dsb/AML/DataScienceBowl/data/results.csv'):
+def regress_vol(resultspath = '/data/results.csv'):
 
     """"
     Method for regressing final kaggle predictions to the provided patient training volumes
@@ -427,10 +427,10 @@ def regress_vol(resultspath = '/home/odyss/Desktop/dsb/AML/DataScienceBowl/data/
         newline='\n')  # new line character
 
     # pickle dump regression models built using the training data, so they can be loaded and used at test time
-    with open('/home/odyss/Desktop/dsb/AML/DataScienceBowl/data/regressionModel_esvVol', 'wb') as f:
+    with open('/data/regressionModel_esvVol', 'wb') as f:
         pickle.dump(esv_regvol , f)
 
-    with open('/home/odyss/Desktop/dsb/AML/DataScienceBowl/data/regressionModel_edvVol', 'wb') as fi:
+    with open('/data/regressionModel_edvVol', 'wb') as fi:
         pickle.dump(edv_regvol , fi)
 
 
@@ -441,7 +441,7 @@ if __name__ == "__main__":
 
 
     # contains 'train', 'validate', etc
-    data_path = '/home/odyss/Desktop/dsb/AML/DataScienceBowl/data/'
+    data_path = '/DataScienceBowl/data/'
 
     labels = np.loadtxt(os.path.join(data_path, 'train.csv'), delimiter=',', skiprows=1)
     label_dict = {}
@@ -454,7 +454,7 @@ if __name__ == "__main__":
     # contains 'sax5', 'sax6', ...
     studies = next(os.walk(train_path))[1]
 
-    results_csv = open('/home/odyss/Desktop/dsb/AML/DataScienceBowl/data/results_401_500.csv', 'w')
+    results_csv = open('/data/results_401_500.csv', 'w')
 
     for study in studies:
 
@@ -484,4 +484,4 @@ if __name__ == "__main__":
 
     results_csv.close()
 
-    #regress_vol(resultspath = '/home/odyss/Desktop/dsb/AML/DataScienceBowl/data/results_final.csv') # regress final volumes
+    
