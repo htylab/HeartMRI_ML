@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 
 # Declare the top level directories that hold the image and contour files within the sunnybrook data
 
-sb_root = "/Users/Peadar/Documents/KagglePythonProjects/SunnybrookData"
+sb_root = "/SunnybrookData"
 image_dir = os.path.join(sb_root, "challenge_training")
 contour_dir = os.path.join(sb_root,"Sunnybrook Cardiac MR Database ContoursPart3","TrainingDataContours")
 
@@ -196,8 +196,8 @@ if __name__ == "__main__":
                                               # image_dir, SAX_SERIES, crop_resize,
                                              #  newsize=(256, 256))
 
-    imagedata = np.load('/Users/Peadar/Documents/KagglePythonProjects/AML/DataScienceBowl/data/SBXtrainImage256')
-    contourdata = np.load('/Users/Peadar/Documents/KagglePythonProjects/AML/DataScienceBowl/data/SBXtrainMask256')
+    imagedata = np.load('/data/SBXtrainImage256')
+    contourdata = np.load('/data/SBXtrainMask256')
 
     masks_binary = get_binary_masks(contourdata, mask_region = (100,100),
                                     preprocess=crop_resize, newsize=(32, 32))
