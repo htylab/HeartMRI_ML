@@ -13,15 +13,15 @@ import dicom
 from LoadData import crop_resize
 from sklearn import linear_model
 import sys
-sys.path.insert(0, '/Users/Peadar/Documents/KagglePythonProjects/AML/DataScienceBowl/convolution/')
+sys.path.insert(0, '/DataScienceBowl/convolution/')
 import LeNet
 from LeNet import predict as CNNpred
-sys.path.insert(0, '/Users/Peadar/Documents/KagglePythonProjects/AML/DataScienceBowl/Region of Interest/Stacked autoencoder/')
+sys.path.insert(0, '/DataScienceBowl/Region of Interest/Stacked autoencoder/')
 from stackedAutoencoder import predict_sa as SApred
 from stackedAutoencoder import crop_ROI
 from stackedAutoencoder import SA
 
-sys.path.insert(0, '/Users/Peadar/Documents/KagglePythonProjects/AML/DataScienceBowl/Active Contour/')
+sys.path.insert(0, '/DataScienceBowl/Active Contour/')
 import active_contour as AC
 
 
@@ -198,7 +198,7 @@ def calc_volarea(patient):
     patient.esv = esv
     patient.ef= ef
 
-def regress_vol(resultspath = '/Users/Peadar/Documents/KagglePythonProjects/AML/DataScienceBowl/results.csv'):
+def regress_vol(resultspath = '/DataScienceBowl/results.csv'):
 
     """"
     Method for regressing final kaggle predictions to the provided patient training volumes
@@ -239,10 +239,10 @@ def regress_vol(resultspath = '/Users/Peadar/Documents/KagglePythonProjects/AML/
 
     # pickle dump regression models built using the training data, so they can be loaded and used at test time
 
-    with open('/Users/Peadar/Documents/KagglePythonProjects/AML/DataScienceBowl/data/regressionModel_esvVol', 'wb') as f:
+    with open('/DataScienceBowl/data/regressionModel_esvVol', 'wb') as f:
         pickle.dump(esv_regvol , f)
 
-    with open('/Users/Peadar/Documents/KagglePythonProjects/AML/DataScienceBowl/data/regressionModel_edvVol', 'wb') as fi:
+    with open('/DataScienceBowl/data/regressionModel_edvVol', 'wb') as fi:
         pickle.dump(edv_regvol , fi)
 
 
@@ -277,4 +277,4 @@ if __name__ == "__main__":
             print '***ERROR***: Exception %s thrown by patient %s' % (str(e), patient.name)
     results_csv.close()
 
-    regress_vol(resultspath = '/Users/Peadar/Documents/KagglePythonProjects/AML/DataScienceBowl/results.csv') # regress final volumes
+    regress_vol(resultspath = '/DataScienceBowl/results.csv') # regress final volumes
