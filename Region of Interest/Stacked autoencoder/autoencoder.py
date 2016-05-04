@@ -221,7 +221,7 @@ if __name__ == "__main__":
 
     # load sunny data and collapse to correct dim
 
-    train = np.load('/Users/Peadar/Documents/KagglePythonProjects/AML/DataScienceBowl/data/SBXtrainImage_batch')
+    train = np.load('/data/SBXtrainImage_batch')
     dim = train.shape
     train = np.reshape(train, (dim[0], (dim[1]*dim[2])))
     train = np.array(train, dtype='float64')
