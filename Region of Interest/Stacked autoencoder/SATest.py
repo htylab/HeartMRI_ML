@@ -73,20 +73,20 @@ if __name__ == "__main__":
 
     # load required data
 
-    roi = np.load('/Users/Peadar/Documents/KagglePythonProjects/AML/DataScienceBowl/data/SBXtrainBinaryMask32')
-    train = np.load('/Users/Peadar/Documents/KagglePythonProjects/AML/DataScienceBowl/data/SBXtrainImage256')
-    mask = np.load('/Users/Peadar/Documents/KagglePythonProjects/AML/DataScienceBowl/data/SBXtrainMask256')
+    roi = np.load('/data/SBXtrainBinaryMask32')
+    train = np.load('/data/SBXtrainImage256')
+    mask = np.load('/data/SBXtrainMask256')
 
     # crop data based on ROI
     train_roi =crop_ROI(images=train, roi=roi, roi_dim=(100,100), newsize=(64, 64))
     mask_roi =crop_ROI(images= mask, roi=roi, roi_dim=(100,100), newsize=(64, 64))
 
     # call predict function
-    mask_predictions = predict_sa(train_roi, trained_SA_path = '/Users/Peadar/Documents/KagglePythonProjects/AML/DataScienceBowl/data/SA_RLUmodel')
+    mask_predictions = predict_sa(train_roi, trained_SA_path = '/data/SA_RLUmodel')
 
     # store predictions
 
-    mask_predictions.dump('/Users/Peadar/Documents/KagglePythonProjects/AML/DataScienceBowl/data/SA_predictions')
+    mask_predictions.dump('/data/SA_predictions')
 
     # methods for plotting scatter of results
 
