@@ -203,7 +203,7 @@ def finetune_sa(train_data, train_masks, numbatches, n_epochs, pretrainedSA, **a
 
 
 
-def predict_sa(images, trained_SA_path = '/Users/Peadar/Documents/KagglePythonProjects/AML/DataScienceBowl/data/SA_Xmodel'):
+def predict_sa(images, trained_SA_path = '/data/SA_Xmodel'):
 
     with open(trained_SA_path) as f:
          SA_inst = pickle.load(f)
@@ -298,16 +298,16 @@ if __name__ == "__main__":
 
 
     # load required inputs and call training method (random data used until CNN is working)
-    roi = np.load('/Users/Peadar/Documents/KagglePythonProjects/AML/DataScienceBowl/data/SBXtrainBinaryMask32')
-    train = np.load('/Users/Peadar/Documents/KagglePythonProjects/AML/DataScienceBowl/data/SBXtrainImage256')
-    mask = np.load('/Users/Peadar/Documents/KagglePythonProjects/AML/DataScienceBowl/data/SBXtrainMask256')
+    roi = np.load('/data/SBXtrainBinaryMask32')
+    train = np.load('/data/SBXtrainImage256')
+    mask = np.load('/data/SBXtrainMask256')
 
     dimimages = roi.shape
     numimages = dimimages[0]
 
 
 
-    with open('/Users/Peadar/Documents/KagglePythonProjects/AML/DataScienceBowl/data/CNN_output.pickle', 'rb') as f:
+    with open('/data/CNN_output.pickle', 'rb') as f:
         roi_pred = pickle.load(f)
         roi_pred = np.asarray(roi_pred)
         thres = 0.5
@@ -343,16 +343,16 @@ if __name__ == "__main__":
                                             learning_rate=100, lam=0.0001)
 
 
-    with open('/Users/Peadar/Documents/KagglePythonProjects/AML/DataScienceBowl/data/SA_PreModel', 'wb') as f:
+    with open('/data/SA_PreModel', 'wb') as f:
         pickle.dump(pretrainedSA, f)
 
-    with open('/Users/Peadar/Documents/KagglePythonProjects/AML/DataScienceBowl/data/SA_Model', 'wb') as g:
+    with open('/data/SA_Model', 'wb') as g:
         pickle.dump(finetunedSA, g)
 
     train_roi = np.reshape(train_roi, (dim[0], dim[1],dim[2]))
     mask_roi = np.reshape(mask_roi, (dim[0], dim[1],dim[2]))
-    mask_predictions = predict_sa(train_roi, trained_SA_path = '/Users/Peadar/Documents/KagglePythonProjects/AML/DataScienceBowl/data/SA_Model')
+    mask_predictions = predict_sa(train_roi, trained_SA_path = '/data/SA_Model')
 
 
-    with open('/Users/Peadar/Documents/KagglePythonProjects/AML/DataScienceBowl/datadata/SA_Pred', 'wb') as f:
+    with open('/data/SA_Pred', 'wb') as f:
         pickle.dump(mask_predictions, f)
