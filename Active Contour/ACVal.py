@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import active_contour as AC
 import sys
-sys.path.insert(0, '/Users/Peadar/Documents/KagglePythonProjects/AML/DataScienceBowl/Region of Interest/Stacked autoencoder/')
+sys.path.insert(0, '/Region of Interest/Stacked autoencoder/')
 import stackedAutoencoder
 from stackedAutoencoder import crop_ROI
 import pdb
@@ -15,7 +15,7 @@ import pdb
 """
 
 # ADD YOUR DATA'S LOCAL DATA PATH
-LOCALDATAPATH = '/Users/Peadar/Documents/KagglePythonProjects/AML/DataScienceBowl/data/'
+LOCALDATAPATH = '/data/'
 
 # load required data
 
